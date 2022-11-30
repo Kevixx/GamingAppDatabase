@@ -8,7 +8,8 @@ CREATE TABLE profiles
     country      varchar(50)             not null,
     address      varchar(50)             not null,
     profile_name varchar(50)             not null,
-    password     varchar(50)             not null
+    password     varchar(50)             not null,
+    isAdmin      boolean                 not null
 );
 
 
