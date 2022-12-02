@@ -40,15 +40,15 @@ CREATE TABLE genres
 CREATE TABLE transactions
 (
     order_id         serial primary key,
-    email            varchar(50)   not null references users (email) on update cascade,
-    date_of_purchase date          not null,
-    purchased_price  decimal(6, 2) not null
+    email            varchar(50) not null references users (email) on update cascade,
+    date_of_purchase date        not null
 );
 
 CREATE TABLE games_in_transaction
 (
-    game_id  serial references games(game_id),
-    order_id serial references transactions (order_id),
+    game_id         serial references games (game_id),
+    order_id        serial references transactions (order_id),
+    purchased_price decimal(6, 2) not null,
     primary key (game_id, order_id)
 );
 --TRANSACTION TABLES END
