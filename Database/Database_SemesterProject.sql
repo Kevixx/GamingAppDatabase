@@ -39,7 +39,7 @@ CREATE TABLE genres
 --TRANSACTION TABLES
 CREATE TABLE transactions
 (
-    order_id         serial primary key,
+    transaction_id         serial primary key,
     email            varchar(50) not null references users (email) on update cascade,
     date_of_purchase date        not null
 );
@@ -47,9 +47,8 @@ CREATE TABLE transactions
 CREATE TABLE games_in_transaction
 (
     game_id         serial references games (game_id),
-    order_id        serial references transactions (order_id),
-    purchased_price decimal(6, 2) not null,
-    primary key (game_id, order_id)
+    transaction_id        serial references transactions (transaction_id),
+    primary key (game_id, transaction_id)
 );
 --TRANSACTION TABLES END
 
