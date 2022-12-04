@@ -5,12 +5,12 @@ SET SCHEMA 'gaming_application_database';
 --USERS TABLE
 CREATE TABLE users
 (
-    email        varchar(50) primary key not null,
-    country      varchar(50)             not null,
-    address      varchar(50)             not null,
-    profile_name varchar(50)             not null,
-    password     varchar(50)             not null,
-    isAdmin      boolean                 not null
+    email     varchar(50) primary key not null,
+    country   varchar(50)             not null,
+    address   varchar(50)             not null,
+    user_name varchar(50)             not null,
+    password  varchar(50)             not null,
+    isAdmin   boolean                 not null
 );
 --USERS TABLE END
 
@@ -39,15 +39,15 @@ CREATE TABLE genres
 --TRANSACTION TABLES
 CREATE TABLE transactions
 (
-    transaction_id         serial primary key,
+    transaction_id   serial primary key,
     email            varchar(50) not null references users (email) on update cascade,
     date_of_purchase date        not null
 );
 
 CREATE TABLE games_in_transaction
 (
-    game_id         serial references games (game_id),
-    transaction_id        serial references transactions (transaction_id),
+    game_id        serial references games (game_id),
+    transaction_id serial references transactions (transaction_id),
     primary key (game_id, transaction_id)
 );
 --TRANSACTION TABLES END
