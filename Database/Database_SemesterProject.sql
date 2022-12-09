@@ -5,12 +5,12 @@ SET SCHEMA 'gaming_application_database';
 --USERS TABLE
 CREATE TABLE "user"
 (
-    email     varchar(50) primary key not null,
-    country   varchar(50)             not null,
-    address   varchar(50)             not null,
-    user_name varchar(50)             not null,
-    "password"  varchar(50)             not null,
-    isAdmin   boolean                 not null
+    email      varchar(50) primary key not null,
+    country    varchar(50)             not null,
+    address    varchar(50)             not null,
+    user_name  varchar(50)             not null,
+    "password" varchar(50)             not null,
+    isAdmin    boolean                 not null
 );
 --USERS TABLE END
 
@@ -52,21 +52,3 @@ CREATE TABLE game_in_transaction
     primary key (game_id, transaction_id)
 );
 --TRANSACTION TABLES END
-
-
--- SELECT git.game_id
--- FROM games
---          inner join games_in_transaction git on games.game_id = git.game_id
--- WHERE title like '%alo%'
--- group by git.game_id;
---
--- SELECT gt.game_id, g.title, d.description, genre, gt.purchased_price
--- FROM games_in_transaction gt
---          join transactions t on t.transaction_id = gt.transaction_id
---          join games g on gt.game_id = g.game_id
---          join descriptions d on g.game_id = d.game_id
--- join genres g2 on g.game_id = g2.game_id
--- WHERE email = 'kevoboc@yahoo.com'
--- GROUP BY gt.game_id, g.title, d.description, genre, purchased_price;
-
-
