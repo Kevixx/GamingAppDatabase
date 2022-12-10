@@ -24,13 +24,13 @@ CREATE TABLE game
 
 CREATE TABLE description
 (
-    game_id     serial primary key references game (game_id),
+    game_id     serial primary key references game (game_id) on delete cascade,
     description varchar(500)
 );
 
 CREATE TABLE genre
 (
-    game_id serial references game (game_id),
+    game_id serial references game (game_id) on delete cascade,
     genre   varchar(50) not null,
     primary key (game_id, genre)
 );
@@ -46,7 +46,7 @@ CREATE TABLE transaction
 
 CREATE TABLE game_in_transaction
 (
-    game_id         serial references game (game_id),
+    game_id         serial references game (game_id) on update cascade,
     transaction_id  serial references transaction (transaction_id),
     purchased_price decimal(6, 2) not null,
     primary key (game_id, transaction_id)
