@@ -9,7 +9,7 @@ CREATE TABLE "user"
     country    varchar(50)             not null,
     address    varchar(50)             not null,
     user_name  varchar(50)             not null,
-    "password" varchar(50)             not null,
+    "password" varchar(50),
     isAdmin    boolean                 not null
 );
 --USERS TABLE END
@@ -25,7 +25,7 @@ CREATE TABLE game
 CREATE TABLE description
 (
     game_id     serial primary key references game (game_id) on delete cascade,
-    description varchar(500)
+    description varchar(1500)
 );
 
 CREATE TABLE genre
