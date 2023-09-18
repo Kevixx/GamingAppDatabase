@@ -3,6 +3,7 @@ CREATE SCHEMA IF NOT EXISTS gaming_application_database;
 SET SCHEMA 'gaming_application_database';
 
 --USERS TABLE
+--Create user table
 CREATE TABLE "user"
 (
     email      varchar(50) primary key not null,
@@ -12,9 +13,9 @@ CREATE TABLE "user"
     "password" varchar(50),
     isAdmin    boolean                 not null
 );
---USERS TABLE END
 
 --GAMES TABLES
+--Create a game table
 CREATE TABLE game
 (
     game_id serial primary key,
@@ -22,21 +23,24 @@ CREATE TABLE game
     price   decimal(6, 2) not null
 );
 
+--Create a description table
 CREATE TABLE description
 (
     game_id     serial primary key references game (game_id) on delete cascade,
     description varchar(1500)
 );
 
+--Create genre table
 CREATE TABLE genre
 (
     game_id serial references game (game_id) on delete cascade,
     genre   varchar(50) not null,
     primary key (game_id, genre)
 );
---GAMES TABLES END
+
 
 --TRANSACTION TABLES
+--Create transaction table
 CREATE TABLE transaction
 (
     transaction_id   serial primary key,
@@ -44,6 +48,7 @@ CREATE TABLE transaction
     date_of_purchase date        not null
 );
 
+--Create a game in a transaction table
 CREATE TABLE game_in_transaction
 (
     game_id         serial references game (game_id) on update cascade,
@@ -51,4 +56,3 @@ CREATE TABLE game_in_transaction
     purchased_price decimal(6, 2) not null,
     primary key (game_id, transaction_id)
 );
---TRANSACTION TABLES END
